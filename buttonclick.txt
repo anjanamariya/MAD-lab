@@ -1,0 +1,67 @@
+program3
+topic:Develop an android application to implement button click.
+
+Activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="128dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColorHighlight="@color/teal_200"
+        android:textColor="@color/teal_200"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="281dp"
+        tools:layout_editor_absoluteY="331dp" />
+
+
+</LinearLayout>
+
+MainActivity.java:
+package com.example.myappp3;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    Button b;
+    TextView tw;
+    int db;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        b = findViewById(R.id.b);
+        tw=findViewById(R.id.tw);
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                db++;
+                tw.setText(String.valueOf(db));
+
+            }
+        });
+    }
+}
