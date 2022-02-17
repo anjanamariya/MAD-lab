@@ -1,0 +1,86 @@
+PROGRAM 14
+----------
+AIM:Develope android application to implement option menu
+
+
+activity_main.xml
+-----------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        tools:ignore="MissingConstraints"/>
+
+
+</LinearLayout>
+
+
+menu.xml
+--------
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item1"
+        android:title="File" />
+    <item android:id="@+id/item2"
+        android:title="Edit" >
+        <menu>
+            <item android:id="@+id/sitem1"
+                android:title="Cut" />
+            <item android:id="@+id/sitem2"
+                android:title="Copy" />
+            <item android:id="@+id/sitem3"
+                android:title="Paste" />
+        </menu>
+    </item>
+    <item android:id="@+id/item3"
+        android:title="View" />
+</menu>
+
+activitymain.java
+-----------------
+
+package com.example.mydemomenu;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item1:
+                Toast.makeText(getApplicationContext(),"File selected",Toast.LENGTH_LONG).show();
+            case R.id.item2:
+                Toast.makeText(getApplicationContext(),"Edit selected",Toast.LENGTH_LONG).show();
+            case R.id.item3:
+                Toast.makeText(getApplicationContext(),"View selected",Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
