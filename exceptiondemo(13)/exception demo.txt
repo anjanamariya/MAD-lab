@@ -1,6 +1,6 @@
 PROGRAM 13:
 -----------
-AIM:Implement and perform exception handeling
+AIM:Implement and perform exception handelling
 
 Activity_main.xml
 -----------------
